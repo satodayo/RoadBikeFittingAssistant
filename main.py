@@ -49,18 +49,26 @@ def CalculateAngle(base, p1, p2):
     rd = np.rad2deg(theta)
     return rd
 
+#Extract
+rs = ExtractPoint("RShoulder",result)
+rw = ExtractPoint("RWrist", result)
+re = ExtractPoint("RElbow",result)
+rh = ExtractPoint("RHip", result)
+rk = ExtractPoint("RKnee", result)
+ra = ExtractPoint("RAnkle", result)
+
 #Right Elbow Angle
-re = CalculateAngle(ExtractPoint("RElbow",result), ExtractPoint("RShoulder",result), ExtractPoint("RWrist", result))
+re_angle = CalculateAngle(re, rs, rw)
 #Right Shoulder Angle
-rs = CalculateAngle(ExtractPoint("RShoulder",result), ExtractPoint("RElbow",result), ExtractPoint("RHip", result))
+rs_angle = CalculateAngle(rs, re, rh)
 #Right Hip Angle
-rh = CalculateAngle(ExtractPoint("RHip",result), ExtractPoint("RKnee",result), ExtractPoint("RShoulder", result))
+rh_angle = CalculateAngle(rh, rk, rs)
 #Right Knee Angle
-rk = CalculateAngle(ExtractPoint("RKnee",result), ExtractPoint("RHip",result), ExtractPoint("RAnkle", result))
+rk_angle = CalculateAngle(rk, rh, ra)
 
 with open("result/resultangle.txt", "a") as angle:
     angle.write("{}\n".format(datetime.datetime.now()))
-    angle.write("Right Elbow :{:.1f} °\n".format(re))
-    angle.write("Right Shoulder :{:.1f} °\n".format(rs))
-    angle.write("Right Hip :{:.1f} °\n".format(rh))
-    angle.write("Right Knee :{:.1f} °\n\n".format(rk))
+    angle.write("Right Elbow Angle:{:.1f} °\n".format(re_angle))
+    angle.write("Right Shoulder Angle:{:.1f} °\n".format(rs_angle))
+    angle.write("Right Hip Angle:{:.1f} °\n".format(rh_angle))
+    angle.write("Right Knee Angle:{:.1f} °\n\n".format(rk_angle))
