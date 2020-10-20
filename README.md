@@ -1,4 +1,7 @@
-﻿# RoadBike Fitting Assistant
+# RoadBike Fitting Assistant
+
+
+![result](https://github.com/satodayo/RoadBikeFittingAssistant/blob/master/result/resultpic.jpg)
 
 ## How To Install
 
@@ -43,6 +46,5 @@ ex.)
 
 ## Caution
 - 多少の誤差が発生する可能性があるため、参考程度にご利用ください
-
 
 **※株式会社UserLocal様の姿勢推定AI APIを利用させていただいています。**
